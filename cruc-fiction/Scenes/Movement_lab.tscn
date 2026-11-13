@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bryko5anc4705"]
+
+[ext_resource type="FontFile" uid="uid://6x05hmir6rnp" path="res://Materials/Fonts/Death Note.ttf" id="1_q06wh"]
+[ext_resource type="Script" uid="uid://dbjl7l6rej4n0" path="res://Scripts/moving_label.gd" id="2_575aj"]
+
+[node name="MovementLab" type="Node2D" unique_id=605853345]
+
+[node name="MovingLabel" type="Label" parent="." unique_id=377421469]
+offset_left = -550.0
+offset_right = -374.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.37022406, 6.40139e-06, 0.26531133, 1)
+theme_override_fonts/font = ExtResource("1_q06wh")
+theme_override_font_sizes/font_size = 25
+text = "WE ARE COMING"
+script = ExtResource("2_575aj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=120593518]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1752334896]
+z_index = -2
+offset_left = -668.0
+offset_top = -409.0
+offset_right = 747.0
+offset_bottom = 416.0
+color = Color(0, 0, 0, 1)

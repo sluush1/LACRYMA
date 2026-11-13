@@ -1,0 +1,14 @@
+extends Sprite2D
+var speed = 8;
+var health = 200;
+var meter = 0;
+
+var playerTurn;
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

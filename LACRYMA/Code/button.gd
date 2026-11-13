@@ -1,6 +1,6 @@
 extends Button
 
-@onready var whill = $"../WhillTEST"
+
 @onready var phil = $"../PhilTEST"
 signal endTurn;
 # Called when the node enters the scene tree for the first time.

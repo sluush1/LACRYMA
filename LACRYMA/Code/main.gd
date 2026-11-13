@@ -1,13 +1,13 @@
 extends Node2D
 @onready var phil = $"PhilTEST"
-@onready var whill = $"WhillTEST"
+
 @onready var attack = $"AttackButton"
 @onready var tainer = $"enemyContainer"
 @onready var turnLabel = $"turnLabel"
 @onready var spawnPoints: Node = $enemySpawn
 @export var enemyPrint: PackedScene
 var max = 100;
-var enemyAmount = 4
+var enemyAmount = 5
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
@@ -16,7 +16,7 @@ var names_only;
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in spawnPoints.get_child_count():
+	for i in enemyAmount:
 		var new_enemy = enemyPrint.instantiate()
 		new_enemy.name = "enemy" + str(EnemyList.size())
 		EnemyList.append(new_enemy) 
@@ -29,6 +29,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("thing"):
 		determineMeter()
+	
 
 	
 #func turnOrder(x) -> void:
@@ -65,6 +66,7 @@ func turn(ent) -> void:
 	ent.playerTurn = true
 	if ent == phil:
 		attack.show()
+
 func _on_attack_button_pressed() -> void:
 	attack.hide()
 	
@@ -85,3 +87,16 @@ func determineMeter() -> void:
 				return a.speed < b.speed;
 			return a.meter > b.meter);
 		turn(enemyTurn.pop_front())
+
+
+
+
+
+
+
+
+
+
+#var hovered_ui = get_viewport().gui_get_hovered_control()
+	#if hovered_ui:
+		#print("UI is blocking mouse: ", hovered_ui.name)

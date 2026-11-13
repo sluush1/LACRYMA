@@ -12,8 +12,10 @@ script = ExtResource("1_vy5pj")
 enemyPrint = ExtResource("2_bmxlf")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=180935623]
+z_index = -3
 offset_right = 1193.0
 offset_bottom = 659.0
+mouse_filter = 2
 color = Color(0.34789982, 0.34789982, 0.34789982, 1)
 
 [node name="PhilTEST" type="Sprite2D" parent="." unique_id=263172064]
@@ -50,19 +52,19 @@ z_index = 1
 [node name="enemySpawn" type="Node2D" parent="." unique_id=1204495236]
 
 [node name="Marker2D1" type="Marker2D" parent="enemySpawn" unique_id=1914313732]
-position = Vector2(787, 508)
+position = Vector2(741, 398)
 
 [node name="Marker2D2" type="Marker2D" parent="enemySpawn" unique_id=282688904]
-position = Vector2(768, 220)
+position = Vector2(741, 103)
 
 [node name="Marker2D3" type="Marker2D" parent="enemySpawn" unique_id=310171549]
-position = Vector2(1049, 483)
+position = Vector2(1081, 402)
 
 [node name="Marker2D4" type="Marker2D" parent="enemySpawn" unique_id=1818367306]
-position = Vector2(1041, 226)
+position = Vector2(1068, 104)
 
 [node name="Marker2D5" type="Marker2D" parent="enemySpawn" unique_id=613907411]
-position = Vector2(919, 364)
+position = Vector2(896, 244)
 
 [connection signal="endTurn" from="AttackButton" to="." method="_on_attack_button_end_turn"]
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]

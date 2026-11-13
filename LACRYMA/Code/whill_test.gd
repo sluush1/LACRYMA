@@ -33,7 +33,7 @@ func attack(target):
 
 func _on_area_2d_mouse_entered() -> void:
 	sprite.modulate = HOVER_COLOR
-	print("hover");
+
 
 
 func _on_area_2d_mouse_exited() -> void:

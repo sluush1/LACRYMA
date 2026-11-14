@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bqhmbqi4sj05"]
+
+[ext_resource type="FontFile" uid="uid://6x05hmir6rnp" path="res://Materials/Fonts/Death Note.ttf" id="1_ge8f3"]
+[ext_resource type="Script" uid="uid://dlh5tn6ug5ndp" path="res://Scripts/player_movement.gd" id="2_h4217"]
+
+[node name="PlayrMovement" type="Node2D" unique_id=511692705]
+
+[node name="Label" type="Label" parent="." unique_id=814043996]
+offset_right = 131.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.43529412, 0, 0.8509804, 1)
+theme_override_fonts/font = ExtResource("1_ge8f3")
+theme_override_font_sizes/font_size = 49
+text = "Sammy Spinefracture"
+script = ExtResource("2_h4217")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1027519795]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=519000336]
+z_index = -3
+offset_left = -643.0
+offset_top = -338.0
+offset_right = 603.0
+offset_bottom = 346.0
+color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+
+[node name="Goal" type="Label" parent="." unique_id=506269268]
+offset_left = 1292.0
+offset_top = 714.0
+offset_right = 1343.0
+offset_bottom = 762.0
+pivot_offset = Vector2(10.515, 8.785)
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0.50074106, 1.2153015e-06, 1.4439226e-07, 1)
+theme_override_fonts/font = ExtResource("1_ge8f3")
+theme_override_font_sizes/font_size = 38
+text = "T"

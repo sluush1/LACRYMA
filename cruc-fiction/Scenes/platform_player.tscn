@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://b3m45qn2p7xb5"]
+
+[ext_resource type="Script" uid="uid://bi3qfloyqctgi" path="res://Scripts/Nodescript.gd" id="1_0enij"]
+[ext_resource type="Script" uid="uid://btqf60c074kgb" path="res://Scripts/player.gd" id="1_fleyt"]
+[ext_resource type="Texture2D" uid="uid://c04cro1ww2ee4" path="res://Materials/Images/Phil.png" id="2_u4kry"]
+[ext_resource type="Texture2D" uid="uid://cdfxoanl62i1l" path="res://Materials/Images/Platform.png" id="3_3uo7h"]
+[ext_resource type="Script" uid="uid://df4oov8xj11c1" path="res://Scripts/goal.gd" id="4_ayx0p"]
+[ext_resource type="Texture2D" uid="uid://d3jtnuwknkyo" path="res://Materials/Images/Goal.png" id="4_u4kry"]
+[ext_resource type="Script" uid="uid://h572qf4kbiem" path="res://Scripts/area_2d.gd" id="6_bpr4e"]
+[ext_resource type="FontFile" uid="uid://6x05hmir6rnp" path="res://Materials/Fonts/Death Note.ttf" id="6_dft2o"]
+[ext_resource type="FontFile" uid="uid://c7f22velpt1jh" path="res://Materials/Fonts/fette-unz-fraktur.ttf" id="7_bpr4e"]
+[ext_resource type="Texture2D" uid="uid://biqrw4j7pt38r" path="res://Materials/Images/Whill.png" id="7_dgvwk"]
+[ext_resource type="Script" uid="uid://c6jxygwlyccnj" path="res://Scripts/enemy.gd" id="7_qxiwy"]
+[ext_resource type="Script" uid="uid://dxybtlr5rs8d" path="res://Scripts/runnyguy.gd" id="9_23nc2"]
+[ext_resource type="Texture2D" uid="uid://d18ctxpa1ekov" path="res://Materials/Images/Whon't.png" id="9_qxiwy"]
+[ext_resource type="Script" uid="uid://b3s28syrxwecs" path="res://Scripts/restart_label.gd" id="13_poxaw"]
+[ext_resource type="Script" uid="uid://itcpwi5niuup" path="res://Scripts/win_label.gd" id="15_y8cjk"]
+[ext_resource type="Script" uid="uid://bj8jh53602sg7" path="res://Scripts/lose_label.gd" id="16_va5gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s7ye"]
+size = Vector2(69, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vxaw"]
+size = Vector2(333.4375, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mduo4"]
+size = Vector2(30, 58.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siage"]
+size = Vector2(70.160286, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyvkf"]
+size = Vector2(24, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pfrj"]
+size = Vector2(68, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq3hw"]
+size = Vector2(26.25, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dinq"]
+size = Vector2(40, 46)
+
+[node name="PlatformPlayer" type="Node2D" unique_id=897647320]
+script = ExtResource("1_0enij")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1906350796]
+script = ExtResource("1_fleyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=843276282]
+position = Vector2(212.5, 130.5)
+scale = Vector2(4.34375, 4.34375)
+texture = ExtResource("2_u4kry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1638363725]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(212.5, 165)
+shape = SubResource("RectangleShape2D_1s7ye")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1657516096]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=759119973]
+position = Vector2(279.00003, 612)
+scale = Vector2(11.113281, 5.1549363)
+texture = ExtResource("3_3uo7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1944842604]
+position = Vector2(279.5625, 548)
+shape = SubResource("RectangleShape2D_4vxaw")
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=1885947486]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Platform" unique_id=486425808]
+position = Vector2(691, 540)
+scale = Vector2(11.113281, 5.1549363)
+texture = ExtResource("3_3uo7h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform" unique_id=214445671]
+position = Vector2(691.28125, 475)
+shape = SubResource("RectangleShape2D_4vxaw")
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1667550259]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Platform2" unique_id=551506007]
+position = Vector2(972, 115)
+scale = Vector2(4.9628887, 2.2962182)
+texture = ExtResource("3_3uo7h")
+
+[node name="Upper plat" type="CollisionShape2D" parent="Platform2" unique_id=1726058821]
+position = Vector2(1064, 97)
+shape = SubResource("RectangleShape2D_4vxaw")
+
+[node name="Goal" type="Area2D" parent="." unique_id=1372889620]
+script = ExtResource("4_ayx0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=84011535]
+position = Vector2(818, 409.99997)
+scale = Vector2(2.9999988, 2.9999988)
+texture = ExtResource("4_u4kry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1199612655]
+position = Vector2(818, 429.25)
+shape = SubResource("RectangleShape2D_mduo4")
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=145691809]
+script = ExtResource("6_bpr4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1165499373]
+modulate = Color(0.43529412, 0, 0.8509804, 1)
+position = Vector2(421, 761)
+scale = Vector2(37.656635, 11.234226)
+shape = SubResource("RectangleShape2D_siage")
+
+[node name="Enemy" type="Area2D" parent="." unique_id=1568500004]
+script = ExtResource("7_qxiwy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=1547014541]
+position = Vector2(622, 380.00003)
+scale = Vector2(4.8125, 4.8125)
+texture = ExtResource("7_dgvwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=1753958871]
+position = Vector2(622, 421)
+shape = SubResource("RectangleShape2D_wyvkf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy" unique_id=809271375]
+position = Vector2(622, 435.5)
+shape = SubResource("RectangleShape2D_4pfrj")
+
+[node name="rightCheck" type="RayCast2D" parent="Enemy" unique_id=1385103655]
+position = Vector2(644, 454)
+target_position = Vector2(0, 30)
+
+[node name="leftCheck" type="RayCast2D" parent="Enemy" unique_id=37416759]
+position = Vector2(602, 454)
+target_position = Vector2(0, 30)
+
+[node name="RUNNYGUY" type="CharacterBody2D" parent="." unique_id=29819884]
+script = ExtResource("9_23nc2")
+
+[node name="Sprite2D" type="Sprite2D" parent="RUNNYGUY" unique_id=185120692]
+position = Vector2(984, 43)
+scale = Vector2(2.1874995, 2.1874995)
+texture = ExtResource("9_qxiwy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RUNNYGUY" unique_id=101896162]
+position = Vector2(983.875, 60.5)
+shape = SubResource("RectangleShape2D_lq3hw")
+
+[node name="OuchBox" type="Area2D" parent="RUNNYGUY" unique_id=1674172830]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RUNNYGUY/OuchBox" unique_id=1217032969]
+position = Vector2(984, 56)
+shape = SubResource("RectangleShape2D_0dinq")
+
+[node name="restartLabel" type="Label" parent="." unique_id=172502650]
+visible = false
+offset_left = 573.0
+offset_top = 173.0
+offset_right = 808.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(0.43529412, 0, 0.84705883, 1)
+theme_override_fonts/font = ExtResource("7_bpr4e")
+theme_override_font_sizes/font_size = 42
+text = "'r' to restart"
+script = ExtResource("13_poxaw")
+
+[node name="winLabel" type="Label" parent="." unique_id=1720845149]
+visible = false
+offset_left = 417.0
+offset_top = 72.0
+offset_right = 822.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.43529412, 0, 0.8509804, 1)
+theme_override_fonts/font = ExtResource("6_dft2o")
+theme_override_font_sizes/font_size = 72
+text = "Level Complete!"
+script = ExtResource("15_y8cjk")
+
+[node name="loseLabel" type="Label" parent="." unique_id=127187495]
+visible = false
+offset_left = 81.0
+offset_top = 215.0
+offset_right = 517.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("6_dft2o")
+theme_override_font_sizes/font_size = 163
+text = "U DED"
+script = ExtResource("16_va5gx")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="RUNNYGUY/OuchBox" to="RUNNYGUY" method="_on_ouch_box_body_entered"]

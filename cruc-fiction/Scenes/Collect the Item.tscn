@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bopda4xn1eoeq"]
+
+[ext_resource type="FontFile" uid="uid://6x05hmir6rnp" path="res://Materials/Fonts/Death Note.ttf" id="1_pg135"]
+[ext_resource type="Script" uid="uid://446ghkkgnuvr" path="res://Scripts/CollectCoin.gd" id="2_pg135"]
+[ext_resource type="FontFile" uid="uid://c7f22velpt1jh" path="res://Materials/Fonts/fette-unz-fraktur.ttf" id="3_1dyt8"]
+
+[node name="CollectTheItem" type="Node2D" unique_id=626927485]
+
+[node name="Player" type="Label" parent="." unique_id=1417343664]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 126.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.43529412, 0, 0.8509804, 1)
+theme_override_fonts/font = ExtResource("1_pg135")
+theme_override_font_sizes/font_size = 43
+text = "Papa Paraplegic"
+script = ExtResource("2_pg135")
+
+[node name="Coin" type="Label" parent="." unique_id=331544158]
+offset_left = 675.0
+offset_top = 252.0
+offset_right = 793.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(0.8392157, 0.7529412, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("3_1dyt8")
+theme_override_font_sizes/font_size = 86
+text = "🪙"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=422090633]
+offset_left = 594.0
+offset_top = 14.0
+offset_right = 766.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.8392157, 0.7529412, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("3_1dyt8")
+theme_override_font_sizes/font_size = 45
+text = "Score: 0"

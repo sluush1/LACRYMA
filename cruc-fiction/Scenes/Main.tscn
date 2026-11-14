@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cwq00tdtha7h0"]
+
+[ext_resource type="Script" uid="uid://bv5b2arpq31wx" path="res://Main.gd" id="1_kln2b"]
+[ext_resource type="FontFile" uid="uid://c7f22velpt1jh" path="res://Materials/Fonts/fette-unz-fraktur.ttf" id="1_uu6xs"]
+[ext_resource type="FontFile" uid="uid://6x05hmir6rnp" path="res://Materials/Fonts/Death Note.ttf" id="2_r0du0"]
+
+[sub_resource type="FontFile" id="FontFile_mj0ii"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+
+[node name="Node2D" type="Node2D" unique_id=1594681446]
+position = Vector2(-1, 17)
+
+[node name="GameTitle" type="Label" parent="." unique_id=1322843809]
+z_index = 4
+offset_left = -191.0
+offset_top = -112.0
+offset_right = 189.0
+offset_bottom = -39.0
+rotation = -0.1308997
+theme_override_colors/font_color = Color(0.7060602, 0, 0.0024453308, 1)
+theme_override_fonts/font = ExtResource("1_uu6xs")
+theme_override_font_sizes/font_size = 75
+text = "The Adventure of Phil"
+horizontal_alignment = 1
+
+[node name="TagLine" type="Label" parent="." unique_id=1484009852]
+offset_left = -130.0
+offset_top = -32.0
+offset_right = 165.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.37799436, 9.7897944e-05, 0.37810743, 1)
+theme_override_fonts/font = SubResource("FontFile_mj0ii")
+theme_override_font_sizes/font_size = 21
+text = "Go to the court and get REVENGE"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="." unique_id=548667836]
+offset_left = -76.0
+offset_top = 84.0
+offset_right = 78.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_r0du0")
+theme_override_font_sizes/font_size = 31
+text = "ENTER TO START"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=555010533]
+script = ExtResource("1_kln2b")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=214212851]
+z_index = -3
+offset_left = -597.0
+offset_top = -362.0
+offset_right = 614.0
+offset_bottom = 368.0
+color = Color(0, 0, 0, 1)

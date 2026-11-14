@@ -26,4 +26,4 @@ func turn():
 	button.show()
 	
 func dead():
-	pass
+	battle.ttext.text = "You Lose!"

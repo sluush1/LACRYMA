@@ -8,7 +8,7 @@ extends Node2D
 @export var enemyPrint: PackedScene
 var max = 100;
 var select = false;
-var enemyAmount = 9
+var enemyAmount = 3
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
@@ -33,42 +33,14 @@ func _ready() -> void:
 		if "battle" in child:
 			child.battle = self
 	EnemyList.append(phil);
-	determineMeter();;;;;;;;;;;;;;
+	determineMeter()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-	
-#func turnOrder(x) -> void:
-	#max = 100
-	#phil.playerTurn = false
-	#whill.playerTurn = false;
-	#if phil.meter < max and whill.meter <max and x:
-		#phil.meter += phil.speed;
-		#whill.meter += whill.speed;
-	#if phil.meter >= max and not whill.meter >= max:
-		#turn(phil)
-	#elif whill.meter >= max and not phil.meter >= max:
-		#turn(whill)
-	#elif phil.meter >= max and whill.meter >= max:
-		#if phil.meter > whill.meter:
-			#turn(phil)
-		#elif phil.meter < whill.meter:
-			#turn(whill)
-		#else:
-			#if phil.speed > whill.speed:
-				#turn(phil)
-			#elif phil.speed < whill.speed:
-				#turn(whill)
-			#else: 
-				#if randi_range(0,1):
-					#turn(phil)
-				#else:
-					#turn(whill)
-	#else:
-		#turnOrder(1)
+
 
 func turn(ent) -> void:
 	turnLabel.hide()
@@ -107,10 +79,11 @@ func hurt(attacker, target):
 	if attacker != phil:
 		attacker.sprite.modulate = Color(1,1,1,1)
 	if target.health <= 0:
-		target.dead()
 		say(target.nombre + " is dead")
+		target.dead()
 		await interact
-	determineMeter();
+	if enemyAmount > 0 and phil.health > 0:
+		determineMeter();
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -120,8 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func say(words):
 	ttext.text = words;
 
-
-
-#var hovered_ui = get_viewport().gui_get_hovered_control()
-	#if hovered_ui:
-		#print("UI is blocking mouse: ", hovered_ui.name)
+func win():
+	turnLabel.hide()
+	ttext.text = "You Win!"
+	attack.hide()

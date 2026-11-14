@@ -49,3 +49,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func dead():
 	hide();
 	battle.EnemyList.erase(self)
+	battle.enemyAmount -= 1;
+	if battle.enemyAmount <= 0:
+		battle.win();

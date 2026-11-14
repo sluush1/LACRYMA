@@ -8,7 +8,7 @@ extends Node2D
 @export var enemyPrint: PackedScene
 var max = 100;
 var select = false;
-var enemyAmount = 3
+var enemyAmount = 9
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]

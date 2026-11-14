@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cn0bccgn81wnu"]
+
+[ext_resource type="Texture2D" uid="uid://duc0mix4csgqa" path="res://Art/pixil-frame-0.png" id="1_idj7w"]
+[ext_resource type="Script" uid="uid://sobagvlcdnyc" path="res://Code/main.gd" id="1_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://lrc1todi8n8b" path="res://Scenes/enemy.tscn" id="2_bmxlf"]
+[ext_resource type="Texture2D" uid="uid://bn4d8yv1te3b8" path="res://Art/pixil-frame-0 (3).png" id="2_kln2b"]
+[ext_resource type="Script" uid="uid://c7vcwdta0h0in" path="res://Code/phil_test.gd" id="4_4kpch"]
+[ext_resource type="Script" uid="uid://vlrgga8eh5uf" path="res://Code/whill_test.gd" id="6_grg3l"]
+[ext_resource type="Script" uid="uid://681uiygy2etw" path="res://Code/w_label.gd" id="7_frkhe"]
+[ext_resource type="Script" uid="uid://dydo0580jinmh" path="res://Code/button.gd" id="8_1p5hy"]
+[ext_resource type="Script" uid="uid://ckbh21qyitrv5" path="res://Code/turn_label.gd" id="9_h1m7h"]
+
+[node name="Node2D" type="Node2D" unique_id=1133606947]
+script = ExtResource("1_vy5pj")
+enemyPrint = ExtResource("2_bmxlf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=180935623]
+offset_right = 1193.0
+offset_bottom = 659.0
+color = Color(0.34789982, 0.34789982, 0.34789982, 1)
+
+[node name="PhilTEST" type="Sprite2D" parent="." unique_id=263172064]
+position = Vector2(130.00002, 343)
+scale = Vector2(7.78125, 7.78125)
+texture = ExtResource("1_idj7w")
+script = ExtResource("4_4kpch")
+
+[node name="WhillTEST" type="Sprite2D" parent="." unique_id=437857118]
+position = Vector2(1028, 335)
+scale = Vector2(8.96875, 8.96875)
+texture = ExtResource("2_kln2b")
+script = ExtResource("6_grg3l")
+
+[node name="WLabel" type="Label" parent="." unique_id=1002493326]
+offset_left = 1014.0
+offset_top = 303.0
+offset_right = 1109.0
+offset_bottom = 326.0
+text = "100"
+script = ExtResource("7_frkhe")
+
+[node name="AttackButton" type="Button" parent="." unique_id=689247743]
+offset_left = 272.0
+offset_top = 522.0
+offset_right = 630.0
+offset_bottom = 632.0
+theme_override_colors/font_color = Color(0.43529412, 0, 0.8509804, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.27001056, 0.00091356976, 0.54536647, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 74
+text = "ATTACK"
+script = ExtResource("8_1p5hy")
+
+[node name="turnLabel" type="Label" parent="." unique_id=1678337932]
+visible = false
+offset_left = 90.0
+offset_top = 45.0
+offset_right = 254.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 71
+text = "Next:"
+script = ExtResource("9_h1m7h")
+
+[node name="enemyContainer" type="Node2D" parent="." unique_id=1382322927]
+
+[connection signal="endTurn" from="AttackButton" to="." method="_on_attack_button_end_turn"]
+[connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]

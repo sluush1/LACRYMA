@@ -4,14 +4,15 @@ extends Node2D
 
 const off = 1.1
 var nombre = "Shroom";
-var attack = 10;
-var speed = 9
+var attack = randi_range(3,10);
+var speed = randi_range(5,9)
 var health = 200;
 var meter = 0
 var playerTurn;
 var battle: Node = null;
 const HOVER_COLOR := Color(off, off, off, 1.0)
 const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

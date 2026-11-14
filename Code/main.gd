@@ -8,13 +8,14 @@ extends Node2D
 @export var enemyPrint: PackedScene
 var max = 100;
 var select = false;
-var enemyAmount = 5
+var enemyAmount = 9
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
 var mostMeter;
 var names_only;
 var currentTurn;
+var level = 1;
 
 signal interact;
 		
@@ -32,7 +33,7 @@ func _ready() -> void:
 		if "battle" in child:
 			child.battle = self
 	EnemyList.append(phil);
-	determineMeter();
+	determineMeter();;;;;;;;;;;;;;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -99,8 +100,12 @@ func determineMeter() -> void:
 
 func hurt(attacker, target):
 	target.health -= attacker.attack;
+	if attacker != phil:
+		attacker.sprite.modulate = Color(1,0.8,0.8,1)
 	say(attacker.nombre + " dealt " + str(attacker.attack) + " damage to " + target.nombre)
 	await interact
+	if attacker != phil:
+		attacker.sprite.modulate = Color(1,1,1,1)
 	if target.health <= 0:
 		target.dead()
 		say(target.nombre + " is dead")

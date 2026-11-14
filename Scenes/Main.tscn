@@ -58,7 +58,7 @@ theme_override_colors/font_focus_color = Color(1, 0, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.27001056, 0.00091356976, 0.54536647, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 1, 1)
 theme_override_font_sizes/font_size = 42
-text = "ATTACK"
+text = "SKILL"
 script = ExtResource("8_1p5hy")
 
 [node name="turnLabel" type="Label" parent="." unique_id=1678337932]
@@ -86,10 +86,22 @@ position = Vector2(740, 136)
 position = Vector2(1069, 431)
 
 [node name="Marker2D4" type="Marker2D" parent="enemySpawn" unique_id=1818367306]
-position = Vector2(1079, 163)
+position = Vector2(1073, 136)
 
 [node name="Marker2D5" type="Marker2D" parent="enemySpawn" unique_id=613907411]
-position = Vector2(907, 289)
+position = Vector2(921, 273)
+
+[node name="Marker2D6" type="Marker2D" parent="enemySpawn" unique_id=1130853938]
+position = Vector2(911, 428)
+
+[node name="Marker2D7" type="Marker2D" parent="enemySpawn" unique_id=973350530]
+position = Vector2(733, 273)
+
+[node name="Marker2D8" type="Marker2D" parent="enemySpawn" unique_id=337740289]
+position = Vector2(1076, 280)
+
+[node name="Marker2D9" type="Marker2D" parent="enemySpawn" unique_id=1294112651]
+position = Vector2(894, 136)
 
 [connection signal="endTurn" from="AttackButton" to="." method="_on_attack_button_end_turn"]
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]

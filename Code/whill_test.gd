@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_instance_valid(hp):
 		hp.word = health
 
@@ -39,7 +39,7 @@ func turn():
 	meter = 0;
 	battle.hurt(self, battle.phil)
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if battle.select:
 			battle.hurt(battle.phil, self)

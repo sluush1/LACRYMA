@@ -6,7 +6,7 @@ extends Node2D
 @onready var turnLabel = $"turnLabel"
 @onready var spawnPoints: Node = $enemySpawn
 @export var enemyPrint: PackedScene
-var max = 100;
+var mx = 100;
 var select = false;
 var enemyAmount = 9
 var highestSpeed
@@ -37,7 +37,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -57,11 +57,11 @@ func _on_attack_button_pressed() -> void:
 	
 func determineMeter() -> void:
 	enemyTurn.clear()
-	while EnemyList.any(func(enemy): return enemy.meter < max):
+	while EnemyList.any(func(enemy): return enemy.meter < mx):
 		for i in EnemyList.size():
 			EnemyList[i].meter += EnemyList[i].speed
 	for i in EnemyList.size():
-		if EnemyList[i].meter >= 100:
+		if EnemyList[i].meter >= mx:
 			enemyTurn.append(EnemyList[i])
 	enemyTurn.shuffle()
 	enemyTurn.sort_custom(func(a,b): 
@@ -97,3 +97,5 @@ func win():
 	turnLabel.hide()
 	ttext.text = "You Win!"
 	attack.hide()
+	await interact
+	Manage.stopFighting()

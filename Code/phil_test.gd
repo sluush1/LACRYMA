@@ -3,7 +3,7 @@ extends Sprite2D
 @onready var button = $"../AttackButton"
 @onready var hp = $"../philHP"
 
-var speed = 8;
+var speed = 101;
 var health = 200;
 var meter = 0;
 var attack = 500;
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	hp.text = str(health);
 	
 func turn():

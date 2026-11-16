@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dp56wcxq0oq5b"]
+
+[ext_resource type="Texture2D" uid="uid://bn4d8yv1te3b8" path="res://Art/whill.png" id="1_26yhd"]
+[ext_resource type="Script" uid="uid://bl0mfhkomc3gq" path="res://Scenes/start_icon.gd" id="2_p3ir5"]
+
+[node name="Map" type="Node2D" unique_id=2047836818]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=252669371]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="startIcon" type="Sprite2D" parent="." unique_id=1967913928]
+position = Vector2(590, 43)
+scale = Vector2(9.09375, 9.09375)
+texture = ExtResource("1_26yhd")
+script = ExtResource("2_p3ir5")

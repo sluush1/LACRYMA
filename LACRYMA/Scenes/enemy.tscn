@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vlrgga8eh5uf" path="res://Code/whill_test.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://0ekxu5xqyi4b" path="res://Art/shroom.png" id="2_afpow"]
-[ext_resource type="Script" uid="uid://b3i2ojjajmand" path="res://Scenes/hp_label.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://b3i2ojjajmand" path="res://Code/hp_label.gd" id="3_afpow"]
 
 [node name="Enemy" type="Node2D" unique_id=21027197]
 script = ExtResource("1_1f0kj")

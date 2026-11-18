@@ -4,8 +4,8 @@ extends Node2D
 
 const off = 1.1
 var nombre = "Shroom";
-var attack = 10;
-var speed = 9
+var attack = randi_range(3,10);
+var speed = randi_range(5,9)
 var health = 200;
 var meter = 0
 var playerTurn;
@@ -13,13 +13,14 @@ var battle: Node = null;
 const HOVER_COLOR := Color(off, off, off, 1.0)
 const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show() # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_instance_valid(hp):
 		hp.word = health
 
@@ -38,7 +39,7 @@ func turn():
 	meter = 0;
 	battle.hurt(self, battle.phil)
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if battle.select:
 			battle.hurt(battle.phil, self)
@@ -48,3 +49,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func dead():
 	hide();
 	battle.EnemyList.erase(self)
+	battle.enemyAmount -= 1;
+	if battle.enemyAmount <= 0:
+		battle.win();
+
+func hyde():
+	var ftween := create_tween().set_loops();
+	ftween.tween_property(self, "modulate:a",0.0,1.0)
+	ftween.tween_property(self, "modulate:a", 1.0,1.0)

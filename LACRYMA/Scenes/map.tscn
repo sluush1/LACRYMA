@@ -15,3 +15,10 @@ position = Vector2(590, 43)
 scale = Vector2(9.09375, 9.09375)
 texture = ExtResource("1_26yhd")
 script = ExtResource("2_p3ir5")
+
+[node name="Area2D" type="Area2D" parent="startIcon" unique_id=1286186745]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="startIcon/Area2D" unique_id=1619369975]
+polygon = PackedVector2Array(-7.2577286, 10.776632, 0.10997009, 0.5498285, 6.927841, 10.886599)
+
+[connection signal="input_event" from="startIcon/Area2D" to="startIcon" method="_on_area_2d_input_event"]

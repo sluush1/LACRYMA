@@ -1,17 +1,18 @@
 extends Node2D
 @onready var phil = $"PhilTEST"
 @onready var ttext = $"terminalText"
-@onready var attack = $"AttackButton"
+@onready var attack = $"basicButton"
 @onready var tainer = $"enemyContainer"
 @onready var turnLabel = $"turnLabel"
 @onready var spawnPoints: Node = $enemySpawn
 @export var enemyPrint: PackedScene
 var mx = 100;
 var select = false;
-var enemyAmount = 9
+var enemyAmount = 5
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
+var hurtTarget = [];
 var mostMeter;
 var names_only;
 var currentTurn;
@@ -50,7 +51,7 @@ func turn(ent) -> void:
 	currentTurn = ent;
 	ent.turn();
 
-func _on_attack_button_pressed() -> void:
+func _on_basic_button_pressed() -> void:
 	attack.hide()
 	ttext.text = "Select your attack target."
 	select = true;
@@ -84,6 +85,9 @@ func hurt(attacker, target):
 		await interact
 	if enemyAmount > 0 and phil.health > 0:
 		determineMeter();
+	
+func multihurt(targets: Array[Node]):
+	pass
 
 
 func _unhandled_input(event: InputEvent) -> void:

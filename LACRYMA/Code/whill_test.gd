@@ -12,8 +12,9 @@ var playerTurn;
 var battle: Node = null;
 const HOVER_COLOR := Color(off, off, off, 1.0)
 const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
+var selectable;
 
-
+signal selected
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show() # Replace with function body.
@@ -27,7 +28,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if battle.select:
+	if battle.select or selectable:
 		sprite.modulate = HOVER_COLOR
 
 
@@ -45,6 +46,11 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			battle.hurt(battle.phil, self)
 			sprite.modulate = NORMAL_COLOR
 			battle.select = false;
+		if selectable:
+			selectable = false
+			battle.idk()
+			battle.targets.append(self)
+			hyde()
 			
 func dead():
 	hide();

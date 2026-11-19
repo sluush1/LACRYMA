@@ -61,7 +61,6 @@ text = "ATTACK"
 script = ExtResource("5_k7mbx")
 
 [node name="skill1" type="Button" parent="." unique_id=1489483786]
-visible = false
 offset_left = 654.0
 offset_top = 544.0
 offset_right = 853.0

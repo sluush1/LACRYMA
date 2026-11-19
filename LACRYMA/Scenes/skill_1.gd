@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	battle.select = true
+	battle.multihurt(500, 3, 0)

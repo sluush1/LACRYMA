@@ -8,17 +8,18 @@ extends Node2D
 @export var enemyPrint: PackedScene
 var mx = 100;
 var select = false;
-var enemyAmount = 5
+var enemyAmount = 9
 var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
-var hurtTarget = [];
+var targets = [];
 var mostMeter;
 var names_only;
 var currentTurn;
 var level = 1;
 
 signal interact;
+signal selected;
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -86,8 +87,21 @@ func hurt(attacker, target):
 	if enemyAmount > 0 and phil.health > 0:
 		determineMeter();
 	
-func multihurt(targets: Array[Node]):
-	pass
+func multihurt(atk, amount, _stat):
+	setvar("selectable", true)
+	for i in amount:
+		await selected
+	setvar("selectable", false)
+	for i in targets.size():
+		targets[i].health -= atk
+		say("phil dealt " + str(atk) + " damage to " + targets[i].nombre)
+		await interact
+		if targets[i].health <= 0:
+			say(targets[i].nombre + " is dead")
+			targets[i].dead()
+			await interact
+		if enemyAmount > 0 and phil.health > 0:
+			determineMeter();
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -103,3 +117,10 @@ func win():
 	attack.hide()
 	await interact
 	Manage.stopFighting()
+	
+func setvar(vb,value):
+	for i in tainer.get_children():
+		i.set(vb, value)
+
+func idk():
+	selected.emit()

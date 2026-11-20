@@ -13,6 +13,7 @@ var battle: Node = null;
 const HOVER_COLOR := Color(off, off, off, 1.0)
 const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 var selectable;
+var death = false;
 
 signal selected
 # Called when the node enters the scene tree for the first time.
@@ -48,16 +49,17 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			battle.select = false;
 		if selectable:
 			selectable = false
-			battle.idk()
 			battle.targets.append(self)
-			hyde()
+			battle.idk()
 			
 func dead():
-	hide();
-	battle.EnemyList.erase(self)
-	battle.enemyAmount -= 1;
-	if battle.enemyAmount <= 0:
-		battle.win();
+	if !death:
+		hide();
+		death = true
+		battle.EnemyList.erase(self)
+		battle.enemyAmount -= 1;
+		if battle.enemyAmount <= 0:
+			battle.win();
 
 func hyde():
 	var ftween := create_tween().set_loops();

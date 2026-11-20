@@ -21,9 +21,12 @@ func _process(_delta: float) -> void:
 	hp.text = str(health);
 	
 func turn():
+	battle.turnLabel.text = "Your turn"
+	battle.turnLabel.show()
 	meter = 0;
 	battle.ttext.text = ""
-	button.show()
+	battle.attack.show()
+	battle.skill1.show()
 	
 func dead():
 	battle.ttext.text = "You Lose!"

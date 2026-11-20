@@ -14,4 +14,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_pressed() -> void:
+	hide()
+	battle.attack.hide()
+	battle.ttext.text = "Select your attack targets."
 	battle.multihurt(500, 3, 0)

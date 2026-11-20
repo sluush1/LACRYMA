@@ -4,8 +4,10 @@ extends Node2D
 @onready var attack = $"basicButton"
 @onready var tainer = $"enemyContainer"
 @onready var turnLabel = $"turnLabel"
+@onready var skill1 = $"skill1"
 @onready var spawnPoints: Node = $enemySpawn
 @export var enemyPrint: PackedScene
+var jekyll : Tween;
 var mx = 100;
 var select = false;
 var enemyAmount = 9
@@ -46,9 +48,6 @@ func _process(_delta: float) -> void:
 
 func turn(ent) -> void:
 	turnLabel.hide()
-	if ent == phil:
-		turnLabel.text = "Your turn"
-		turnLabel.show()
 	currentTurn = ent;
 	ent.turn();
 
@@ -89,9 +88,15 @@ func hurt(attacker, target):
 	
 func multihurt(atk, amount, _stat):
 	setvar("selectable", true)
-	for i in amount:
-		await selected
+	hyde()
+	if enemyAmount > 2:
+		for i in amount:
+			await selected
+	else:
+		for i in enemyAmount:
+			await selected
 	setvar("selectable", false)
+	syke()
 	for i in targets.size():
 		targets[i].health -= atk
 		say("phil dealt " + str(atk) + " damage to " + targets[i].nombre)
@@ -100,8 +105,9 @@ func multihurt(atk, amount, _stat):
 			say(targets[i].nombre + " is dead")
 			targets[i].dead()
 			await interact
-		if enemyAmount > 0 and phil.health > 0:
-			determineMeter();
+	targets.clear()
+	if enemyAmount > 0 and phil.health > 0:
+		determineMeter();
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -124,3 +130,21 @@ func setvar(vb,value):
 
 func idk():
 	selected.emit()
+	
+func hyde():
+	if jekyll:
+		jekyll.kill()
+	jekyll = create_tween().set_loops()
+	jekyll.tween_method(hydePotion, 1.0, 0.0 ,1)
+	jekyll.tween_method(hydePotion, 0.0, 1.0, 1)
+
+func hydePotion(slurp: float):
+	for i in targets:
+		if is_instance_valid(i):
+			i.sprite.modulate.a = slurp;
+
+func syke():
+	if jekyll:
+		jekyll.kill()
+	hydePotion(1.0)
+	

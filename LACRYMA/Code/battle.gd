@@ -7,6 +7,7 @@ extends Node2D
 @onready var skill1 = $"skill1"
 @onready var spawnPoints: Node = $enemySpawn
 @export var enemyPrint: PackedScene
+@export var upgrades: Array[Upgrade] = []
 var jekyll : Tween;
 var mx = 100;
 var select = false;
@@ -143,10 +144,10 @@ func syke():
 		jekyll.kill()
 	hydePotion(1.0)
 	
-func togButtons(hide):
+func togButtons(h):
 	for i in get_children():
 		if "button" in i:
-			if hide:
+			if h:
 				i.hide()
 			else:
 				i.show()
@@ -154,7 +155,7 @@ func statcolor(stat, target):
 	target.hp.add_theme_color_override("font_color", get(stat))
 
 func endTurn(ent):
-	var burn = randi_range(1,6)
+	var burn = randi_range(10,100)
 	if ent.stats.has("burned"):
 		ent.health -= burn;
 		say(ent.nombre + " took " + str(burn) + " damage from burn")
@@ -165,3 +166,5 @@ func endTurn(ent):
 			await interact
 	if enemyAmount > 0 and phil.health > 0:
 		determineMeter()
+func upgrade(new_upgrade: Upgrade):
+	upgrades.append(new_upgrade)

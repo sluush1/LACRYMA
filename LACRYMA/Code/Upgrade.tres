@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://ss7bsc4x7ipe"]
+
+[ext_resource type="Script" uid="uid://d4k2ff24wr13t" path="res://Code/upgrade.gd" id="1_g820i"]
+
+[resource]
+script = ExtResource("1_g820i")
+type = 4
+title = "SIGMA"
+value = 9999.0
+odds = 7
+metadata/_custom_type_script = "uid://d4k2ff24wr13t"

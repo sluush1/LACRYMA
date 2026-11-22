@@ -16,7 +16,6 @@ const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 var selectable;
 var death = false;
 
-signal selected
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show() # Replace with function body.
@@ -36,7 +35,8 @@ func _on_area_2d_mouse_entered() -> void:
 
 
 func _on_area_2d_mouse_exited() -> void:
-	sprite.modulate = NORMAL_COLOR# Replace with function body.
+	if battle.currentTurn != self:
+		sprite.modulate = NORMAL_COLOR# Replace with function body.
 
 func turn():
 	meter = 0;

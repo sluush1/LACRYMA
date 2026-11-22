@@ -3,6 +3,7 @@ extends Sprite2D
 @onready var buton = $"../basicButton"
 @onready var hp = $"../philHP"
 
+
 var speed = 10;
 var health = 200;
 var meter = 0;

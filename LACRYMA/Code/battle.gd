@@ -6,8 +6,13 @@ extends Node2D
 @onready var turnLabel = $"turnLabel"
 @onready var skill1 = $"skill1"
 @onready var spawnPoints: Node = $enemySpawn
-@export var enemyPrint: PackedScene
+
+@export var mush: PackedScene
+@export var shroom: PackedScene
+var list = []
+
 @export var upgrades: Array[Upgrade] = []
+@export var buttonPrint: Button;
 var jekyll : Tween;
 var mx = 100;
 var select = false;
@@ -16,26 +21,32 @@ var highestSpeed
 var EnemyList =[];
 var enemyTurn =[]
 var targets = [];
+var skills = [];
 var mostMeter;
 var names_only;
 var currentTurn;
 var level = 1;
+var q = 0
 
 var burned = Color(1.0, 0.647, 0.0, 1.0)
+var vitalized = Color(0,1,0,1)
 
 signal interact;
 signal selected;
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	togButtons(true)
+	var list = [mush,shroom,mush,shroom,mush,shroom,mush,shroom,mush]
 	ttext.text = "";
-	for i in enemyAmount:
-		var new_enemy = enemyPrint.instantiate()
+	while q < enemyAmount:
+		var new_enemy = list[randi_range(0,list.size()-q)].instantiate()
 		new_enemy.name = new_enemy.nombre + str(EnemyList.size())
 		EnemyList.append(new_enemy) 
 		tainer.add_child(new_enemy)
 		new_enemy.battle = self;
-		new_enemy.position = spawnPoints.get_child(i).position
+		new_enemy.position = spawnPoints.get_child(q).position
+		q += new_enemy.level
 	for child in get_children():
 		if "battle" in child:
 			child.battle = self
@@ -155,16 +166,26 @@ func statcolor(stat, target):
 	target.hp.add_theme_color_override("font_color", get(stat))
 
 func endTurn(ent):
-	var burn = randi_range(10,100)
+	var change = randi_range(10,100)
 	if ent.stats.has("burned"):
-		ent.health -= burn;
-		say(ent.nombre + " took " + str(burn) + " damage from burn")
+		ent.health -= change;
+		say(ent.nombre + " took " + str(change) + " damage from burned")
 		await interact
 		if ent.health <= 0:
 			say(ent.nombre + " is dead.")
 			ent.dead()
 			await interact
+	if ent.stats.has("vitalized"):
+		ent.health += change
+		say(ent.nombre + " healed " + str(change) + " from vitalized")
+		await interact
 	if enemyAmount > 0 and phil.health > 0:
 		determineMeter()
 func upgrade(new_upgrade: Upgrade):
 	upgrades.append(new_upgrade)
+	
+func addSkill():
+	pass
+	
+#func await and or var class in true false null self signal const self enum 
+#int String bool Node Node2D Node3D float PackedScene Array Button Label Color ColorRect Sprite2D Marker2D 

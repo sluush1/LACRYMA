@@ -3,10 +3,10 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 const off = 1.1
-var nombre = "Shroom";
-var attack = randi_range(3,10);
-var speed = randi_range(5,9)
-var health = 200;
+const nombre = "Mush";
+var attack = randi_range(6,20);
+var speed = randi_range(3,18)
+var health = 400;
 var meter = 0
 var stats = []
 var playerTurn;
@@ -15,6 +15,7 @@ const HOVER_COLOR := Color(off, off, off, 1.0)
 const NORMAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 var selectable;
 var death = false;
+const level = 2;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

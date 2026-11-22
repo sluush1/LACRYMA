@@ -8,6 +8,7 @@ var attack = randi_range(3,10);
 var speed = randi_range(5,9)
 var health = 200;
 var meter = 0
+var stats = []
 var playerTurn;
 var battle: Node = null;
 const HOVER_COLOR := Color(off, off, off, 1.0)
@@ -29,7 +30,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if battle.select or selectable:
+	if selectable:
 		sprite.modulate = HOVER_COLOR
 
 
@@ -39,14 +40,10 @@ func _on_area_2d_mouse_exited() -> void:
 
 func turn():
 	meter = 0;
-	battle.hurt(self, battle.phil)
+	hurt(self, battle.phil)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if battle.select:
-			battle.hurt(battle.phil, self)
-			sprite.modulate = NORMAL_COLOR
-			battle.select = false;
 		if selectable:
 			selectable = false
 			battle.targets.append(self)
@@ -65,3 +62,19 @@ func hyde():
 	var ftween := create_tween().set_loops();
 	ftween.tween_property(self, "modulate:a",0.0,1.0)
 	ftween.tween_property(self, "modulate:a", 1.0,1.0)
+	
+func hurt(attacker, target, stat = null):
+	target.health -= attacker.attack;
+	attacker.sprite.modulate = Color(1,0.8,0.8,1)
+	battle.say(attacker.nombre + " dealt " + str(attacker.attack) + " damage to " + target.nombre)
+	await battle.interact
+	if stat != null:
+		target.stats.append(stat)
+		battle.say(target.nombre + " is now " + stat)
+		await battle.interact
+	attacker.sprite.modulate = Color(1,1,1,1)
+	if target.health <= 0:
+		battle.say(target.nombre + " is dead")
+		target.dead()
+		await battle.interact
+	battle.endTurn(self);

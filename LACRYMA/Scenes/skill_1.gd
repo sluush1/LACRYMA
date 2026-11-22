@@ -1,5 +1,6 @@
 extends Button
 var battle;
+var button;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +15,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	hide()
-	battle.attack.hide()
+	battle.togButtons(true)
 	battle.ttext.text = "Select your attack targets."
-	battle.multihurt(500, 3, 0)
+	battle.hurt(battle.phil.attack * .5, 3)

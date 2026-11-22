@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@onready var button = $"../basicButton"
+@onready var buton = $"../basicButton"
 @onready var hp = $"../philHP"
 
 var speed = 10;
@@ -9,6 +9,7 @@ var meter = 0;
 var attack = 500;
 var battle;
 var nombre = "Phil"
+var stats = []
 
 var playerTurn;
 # Called when the node enters the scene tree for the first time.
@@ -25,8 +26,7 @@ func turn():
 	battle.turnLabel.show()
 	meter = 0;
 	battle.ttext.text = ""
-	battle.attack.show()
-	battle.skill1.show()
+	battle.togButtons(false)
 	
 func dead():
 	battle.ttext.text = "You Lose!"

@@ -20,6 +20,8 @@ var names_only;
 var currentTurn;
 var level = 1;
 
+var burned = Color(1.0, 0.647, 0.0, 1.0)
+
 signal interact;
 signal selected;
 		
@@ -52,9 +54,9 @@ func turn(ent) -> void:
 	ent.turn();
 
 func _on_basic_button_pressed() -> void:
-	attack.hide()
+	togButtons(true)
 	ttext.text = "Select your attack target."
-	select = true;
+	hurt(phil.attack, 1)
 	
 func determineMeter() -> void:
 	enemyTurn.clear()
@@ -71,25 +73,13 @@ func determineMeter() -> void:
 		return a.meter > b.meter);
 	turn(enemyTurn.pop_front())
 
-func hurt(attacker, target):
-	target.health -= attacker.attack;
-	if attacker != phil:
-		attacker.sprite.modulate = Color(1,0.8,0.8,1)
-	say(attacker.nombre + " dealt " + str(attacker.attack) + " damage to " + target.nombre)
-	await interact
-	if attacker != phil:
-		attacker.sprite.modulate = Color(1,1,1,1)
-	if target.health <= 0:
-		say(target.nombre + " is dead")
-		target.dead()
-		await interact
-	if enemyAmount > 0 and phil.health > 0:
-		determineMeter();
+
 	
-func multihurt(atk, amount, _stat):
+func hurt(atk, amount: int, stat = null):
+	atk = roundi(atk)
 	setvar("selectable", true)
 	hyde()
-	if enemyAmount > 2:
+	if enemyAmount >= amount:
 		for i in amount:
 			await selected
 	else:
@@ -105,9 +95,14 @@ func multihurt(atk, amount, _stat):
 			say(targets[i].nombre + " is dead")
 			targets[i].dead()
 			await interact
+		elif stat != null:
+			targets[i].stats.append(stat)
+			say(targets[i].nombre + " is " + stat)
+			statcolor(stat, targets[i]);
+			await interact
 	targets.clear()
-	if enemyAmount > 0 and phil.health > 0:
-		determineMeter();
+	endTurn(currentTurn)
+
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -120,7 +115,7 @@ func say(words):
 func win():
 	turnLabel.hide()
 	ttext.text = "You Win!"
-	attack.hide()
+	togButtons(true)
 	await interact
 	Manage.stopFighting()
 	
@@ -148,3 +143,25 @@ func syke():
 		jekyll.kill()
 	hydePotion(1.0)
 	
+func togButtons(hide):
+	for i in get_children():
+		if "button" in i:
+			if hide:
+				i.hide()
+			else:
+				i.show()
+func statcolor(stat, target):
+	target.hp.add_theme_color_override("font_color", get(stat))
+
+func endTurn(ent):
+	var burn = randi_range(1,6)
+	if ent.stats.has("burned"):
+		ent.health -= burn;
+		say(ent.nombre + " took " + str(burn) + " damage from burn")
+		await interact
+		if ent.health <= 0:
+			say(ent.nombre + " is dead.")
+			ent.dead()
+			await interact
+	if enemyAmount > 0 and phil.health > 0:
+		determineMeter()

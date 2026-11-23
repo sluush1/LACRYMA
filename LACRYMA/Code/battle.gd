@@ -37,10 +37,10 @@ signal selected;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	togButtons(true)
-	var list = [mush,shroom,mush,shroom,mush,shroom,mush,shroom,mush]
+	var list = [shroom,mush,mush,shroom,mush,shroom,mush,shroom,mush]
 	ttext.text = "";
 	while q < enemyAmount:
-		var new_enemy = list[randi_range(0,list.size()-q)].instantiate()
+		var new_enemy = list[randi_range(0,list.size()-q-1)].instantiate()
 		new_enemy.name = new_enemy.nombre + str(EnemyList.size())
 		EnemyList.append(new_enemy) 
 		tainer.add_child(new_enemy)

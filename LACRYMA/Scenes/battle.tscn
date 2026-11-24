@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lrc1todi8n8b" path="res://Scenes/shroom.tscn" id="2_ww2ai"]
 [ext_resource type="Texture2D" uid="uid://d4f7k3qdiodcj" path="res://Art/Kinoko.png" id="3_f6xt6"]
 [ext_resource type="Script" uid="uid://c7vcwdta0h0in" path="res://Code/phil_test.gd" id="4_qeyqd"]
+[ext_resource type="PackedScene" uid="uid://mb7m1stsgda7" path="res://Scenes/pholiota.tscn" id="4_upb72"]
 [ext_resource type="Script" uid="uid://jbk71wh1bi5h" path="res://Scenes/basic_button.gd" id="5_lrv64"]
 [ext_resource type="Script" uid="uid://27dn4ppb3c57" path="res://Scenes/skill_2.gd" id="6_lrv64"]
 [ext_resource type="Script" uid="uid://ckbh21qyitrv5" path="res://Code/turn_label.gd" id="6_upb72"]
@@ -15,12 +16,15 @@
 script = ExtResource("1_f6xt6")
 mush = ExtResource("2_k7mbx")
 shroom = ExtResource("2_ww2ai")
+pho = ExtResource("4_upb72")
 buttonPrint = NodePath("basicButton")
 
 [node name="Background" type="ColorRect" parent="." unique_id=180935623]
 z_index = -3
-offset_right = 1193.0
-offset_bottom = 659.0
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 1183.0
+offset_bottom = 658.0
 mouse_filter = 2
 color = Color(0.34789982, 0.34789982, 0.34789982, 1)
 
@@ -127,10 +131,10 @@ z_index = 1
 position = Vector2(733, 432)
 
 [node name="Marker2D2" type="Marker2D" parent="enemySpawn" unique_id=282688904]
-position = Vector2(740, 136)
+position = Vector2(1073, 430)
 
 [node name="Marker2D3" type="Marker2D" parent="enemySpawn" unique_id=310171549]
-position = Vector2(1069, 431)
+position = Vector2(737, 139)
 
 [node name="Marker2D4" type="Marker2D" parent="enemySpawn" unique_id=1818367306]
 position = Vector2(1073, 136)
@@ -139,16 +143,16 @@ position = Vector2(1073, 136)
 position = Vector2(921, 273)
 
 [node name="Marker2D6" type="Marker2D" parent="enemySpawn" unique_id=1130853938]
-position = Vector2(911, 428)
+position = Vector2(1077, 279)
 
 [node name="Marker2D7" type="Marker2D" parent="enemySpawn" unique_id=973350530]
 position = Vector2(733, 273)
 
 [node name="Marker2D8" type="Marker2D" parent="enemySpawn" unique_id=337740289]
-position = Vector2(1076, 280)
+position = Vector2(910, 125)
 
 [node name="Marker2D9" type="Marker2D" parent="enemySpawn" unique_id=1294112651]
-position = Vector2(894, 136)
+position = Vector2(914, 433)
 
 [connection signal="pressed" from="basicButton" to="." method="_on_basic_button_pressed"]
 [connection signal="pressed" from="skill1" to="skill1" method="_on_pressed"]

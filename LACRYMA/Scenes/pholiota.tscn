@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://mb7m1stsgda7"]
+
+[ext_resource type="Script" uid="uid://c74l3yydp32x5" path="res://Scenes/pholiota.gd" id="1_7h75y"]
+[ext_resource type="Texture2D" uid="uid://cqhgknhalhbcj" path="res://Art/pholiota.png" id="2_7h75y"]
+[ext_resource type="Script" uid="uid://b3i2ojjajmand" path="res://Code/hp_label.gd" id="3_c7le7"]
+
+[node name="Enemy" type="Node2D" unique_id=21027197]
+script = ExtResource("1_7h75y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=723754771]
+position = Vector2(-10, -2)
+scale = Vector2(1.8992192, 1.8992192)
+texture = ExtResource("2_7h75y")
+
+[node name="HPLabel" type="Label" parent="." unique_id=1839698860]
+offset_left = -32.0
+offset_top = -97.0
+offset_right = 8.0
+offset_bottom = -74.0
+text = "200"
+script = ExtResource("3_c7le7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1278932444]
+position = Vector2(-290, -547)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1738983544]
+polygon = PackedVector2Array(279, 600, 295, 600, 294, 598, 290, 598, 304, 578, 310, 587, 316, 583, 314, 578, 322, 585, 327, 593, 327, 595, 324, 601, 340, 602, 339, 597, 335, 595, 332, 592, 331, 587, 315, 571, 312, 567, 312, 557, 305, 541, 304, 532, 306, 526, 308, 521, 308, 510, 306, 502, 297, 488, 282, 482, 268, 481, 259, 485, 253, 490, 248, 495, 243, 505, 239, 514, 237, 522, 239, 537, 248, 542, 255, 546, 264, 552, 274, 554, 282, 553, 286, 551, 292, 557, 297, 568, 298, 570, 285, 589, 286, 596)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

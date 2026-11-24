@@ -31,3 +31,5 @@ func turn():
 	
 func dead():
 	battle.ttext.text = "You Lose!"
+	await battle.interact
+	Manage.stopFighting()

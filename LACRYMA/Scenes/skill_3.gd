@@ -15,4 +15,4 @@ func _process(_delta: float) -> void:
 func _on_pressed() -> void:
 	battle.togButtons(true)
 	battle.ttext.text = "Select your attack target."
-	battle.hurt(battle.phil.attack * .3, 1, "vitalized") # Replace with function body.
+	battle.hurt(battle.phil.attack * 1.2, 1, "vitalized") # Replace with function body.

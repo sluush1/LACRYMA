@@ -8,14 +8,14 @@
 script = ExtResource("1_afpow")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=723754771]
-scale = Vector2(2.2591383, 2.2591386)
+scale = Vector2(1.5943577, 1.5943581)
 texture = ExtResource("2_287tu")
 
 [node name="HPLabel" type="Label" parent="." unique_id=1839698860]
 offset_left = -17.0
-offset_top = -104.0
+offset_top = -82.0
 offset_right = 23.0
-offset_bottom = -81.0
+offset_bottom = -59.0
 text = "200"
 script = ExtResource("3_afpow")
 
@@ -23,8 +23,8 @@ script = ExtResource("3_afpow")
 position = Vector2(-290, -547)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1738983544]
-position = Vector2(81.00001, 153.00002)
-scale = Vector2(0.7094824, 0.7094823)
+position = Vector2(135, 257)
+scale = Vector2(0.52546453, 0.5254645)
 polygon = PackedVector2Array(269, 652, 307, 619, 369, 633, 353, 545, 397, 527, 407, 501, 403, 478, 386, 471, 360, 471, 341, 461, 255, 470, 223, 492, 180, 499, 172, 514, 180, 529, 197, 542, 188, 551, 197, 560, 189, 566, 204, 573, 228, 569, 234, 577, 251, 578)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -55,8 +55,9 @@ func dead():
 		hide();
 		death = true
 		battle.EnemyList.erase(self)
-		battle.enemyAmount -= 1;
-		if battle.enemyAmount <= 0:
+		battle.enemyAmount -= level;
+		queue_free()
+		if battle.tainer.get_child_count() <= 0:
 			battle.win();
 
 func hyde():

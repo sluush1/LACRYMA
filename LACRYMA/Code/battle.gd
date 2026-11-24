@@ -9,7 +9,8 @@ extends Node2D
 
 @export var mush: PackedScene
 @export var shroom: PackedScene
-var list = []
+@export var pho: PackedScene
+
 
 @export var upgrades: Array[Upgrade] = []
 @export var buttonPrint: Button;
@@ -27,6 +28,7 @@ var names_only;
 var currentTurn;
 var level = 1;
 var q = 0
+var qi = 0
 
 var burned = Color(1.0, 0.647, 0.0, 1.0)
 var vitalized = Color(0,1,0,1)
@@ -37,7 +39,7 @@ signal selected;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	togButtons(true)
-	var list = [shroom,mush,mush,shroom,mush,shroom,mush,shroom,mush]
+	var list = [shroom,mush,pho,shroom,mush,pho,mush,pho,shroom]
 	ttext.text = "";
 	while q < enemyAmount:
 		var new_enemy = list[randi_range(0,list.size()-q-1)].instantiate()
@@ -45,8 +47,9 @@ func _ready() -> void:
 		EnemyList.append(new_enemy) 
 		tainer.add_child(new_enemy)
 		new_enemy.battle = self;
-		new_enemy.position = spawnPoints.get_child(q).position
+		new_enemy.position = spawnPoints.get_child(qi).position
 		q += new_enemy.level
+		qi += 1
 	for child in get_children():
 		if "battle" in child:
 			child.battle = self
@@ -91,11 +94,11 @@ func hurt(atk, amount: int, stat = null):
 	atk = roundi(atk)
 	setvar("selectable", true)
 	hyde()
-	if enemyAmount >= amount:
+	if tainer.get_child_count() >= amount:
 		for i in amount:
 			await selected
 	else:
-		for i in enemyAmount:
+		for i in tainer.get_child_count():
 			await selected
 	setvar("selectable", false)
 	syke()
@@ -105,7 +108,7 @@ func hurt(atk, amount: int, stat = null):
 		await interact
 		if targets[i].health <= 0:
 			say(targets[i].nombre + " is dead")
-			targets[i].dead()
+			dead(targets[i])
 			await interact
 		elif stat != null:
 			targets[i].stats.append(stat)
@@ -173,19 +176,28 @@ func endTurn(ent):
 		await interact
 		if ent.health <= 0:
 			say(ent.nombre + " is dead.")
-			ent.dead()
+			dead(ent)
 			await interact
-	if ent.stats.has("vitalized"):
-		ent.health += change
-		say(ent.nombre + " healed " + str(change) + " from vitalized")
-		await interact
-	if enemyAmount > 0 and phil.health > 0:
-		determineMeter()
+	if is_instance_valid(ent):
+		if ent.stats.has("vitalized"):
+			ent.health += change
+			say(ent.nombre + " healed " + str(change) + " from vitalized")
+			await interact
+		if tainer.get_child_count() > 0 and phil.health > 0:
+			determineMeter()
 func upgrade(new_upgrade: Upgrade):
 	upgrades.append(new_upgrade)
 	
 func addSkill():
 	pass
 	
+func dead(ent):
+	if ent == phil:
+		phil.dead()
+	else:
+		EnemyList.erase(ent)
+		ent.queue_free()
+		if tainer.get_child_count()-1 <= 0:
+			win();
 #func await and or var class in true false null self signal const self enum 
 #int String bool Node Node2D Node3D float PackedScene Array Button Label Color ColorRect Sprite2D Marker2D 
